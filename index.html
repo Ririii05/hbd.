@@ -31,182 +31,207 @@
   --cherry-gloss: #ff6b6b; 
 }
 
-   .plate {
-      position: absolute;
-      bottom: 15px;
-      width: 175px;
-      height: 90px;
-      background: #BFBFBF;
-      border-radius: 50%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
- .cake-side {
-      position: absolute;
-      top: 55px;
-      width: 150px;
-      height: 90px;
-      background: var(--cake-color);
-      border-radius: 0 0 50% 50%;
-      overflow: hidden;
-    }
+.plate {
+  position: absolute;
+  bottom: 15px;
+  width: 175px;
+  height: 90px;
+  background: #BFBFBF;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-     .cake-side::before,
-    .cake-side::after {
-      content: '';
-      position: absolute;
-      width: 150px;
-      height: 90px;
-      border-radius: 0 0 50% 50%;
-      top: -30px;
-    }
+.cake-side {
+  position: absolute;
+  top: 55px;
+  width: 150px;
+  height: 90px;
+  background: var(--cake-color);
+  border-radius: 0 0 50% 50%;
+  overflow: hidden;
+}
 
-    .cake-side::before {
-      background: white;
-      top: -20px;
-    }
-   .cake-side::after {
-      background: var(--cake-color);
-    }
+.cake-side::before,
+.cake-side::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 90px;
+  border-radius: 0 0 50% 50%;
+  top: -30px;
+}
 
-    .cake-top {
-      position: absolute;
-      top: 20px;
-      width: 150px;
-      height: 75px;
-      background: var(--icing-color);
-      border-radius: 50%;
-      border-bottom: 4px solid var(--icing-highlight);
-    }
- .drips {
-      position: absolute;
-      display: flex;
-      width: 150px;
-      height: 70px;
-      top: 55px;
-    }
+.cake-side::before {
+  background: white;
+  top: -20px;
+}
+.cake-side::after {
+  background: var(--cake-color);
+}
 
-    .drip {
-      background: var(--icing-color);
-      border-radius: 0 0 50% 50% / 0 0 20% 20%;
-    }
+.cake-top {
+  position: absolute;
+  top: 20px;
+  width: 150px;
+  height: 75px;
+  background: var(--icing-color);
+  border-radius: 50%;
+  border-bottom: 4px solid var(--icing-highlight);
+}
 
-   .drip:nth-child(1) { height: 50px; width: 20px; }
-    .drip:nth-child(2) { height: 50px; width: 15px; }
-    .drip:nth-child(3) { height: 50px; width: 20px; }
-    .drip:nth-child(4) { height: 60px; width: 25px; }
-    .drip:nth-child(5) { height: 65px; width: 25px; }
-    .drip:nth-child(6) { height: 50px; width: 20px; }
-    .drip:nth-child(7) { height: 60px; width: 15px; }
-    .drip:nth-child(8) { height: 35px; width: 10px; }
+.drips {
+  position: absolute;
+  display: flex;
+  width: 150px;
+  height: 70px;
+  top: 55px;
+  justify-content: space-between;
+}
 
-    .candle {
-      position: absolute;
-      left: 50%;
-      top: 10px;
-      transform: translateX(-50%);
-      width: 8px;
-      height: 50px;
-      background: repeating-linear-gradient(
-        45deg,
-        white,
-        white 4px,
-        #f96bce 4px,
-        #f96bce 6px
-      );
-      border-radius: 10% 10% 20% 20%;
-      z-index: 5;
-    }
+.drip {
+  background: var(--icing-color);
+  border-radius: 0 0 50% 50% / 0 0 20% 20%;
+}
 
-    .candle::after {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1px;
-      height: 5px;
-      background: black;
-    }
+.drip:nth-child(1) { height: 50px; width: 20px; }
+.drip:nth-child(2) { height: 50px; width: 15px; }
+.drip:nth-child(3) { height: 50px; width: 20px; }
+.drip:nth-child(4) { height: 60px; width: 25px; }
+.drip:nth-child(5) { height: 65px; width: 25px; }
+.drip:nth-child(6) { height: 50px; width: 20px; }
+.drip:nth-child(7) { height: 60px; width: 15px; }
+.drip:nth-child(8) { height: 35px; width: 10px; }
 
-    .flame {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: -12px;
-      height: 10px;
-      width: 10px;
-      background: #F78F4E;
-      border-radius: 50%;
-      border: 2px solid yellow;
-      animation: flicker 0.15s infinite alternate;
-    }
+.candle {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 50px;
+  background: repeating-linear-gradient(
+    45deg,
+    white,
+    white 4px,
+    #f96bce 4px,
+    #f96bce 6px
+  );
+  border-radius: 10% 10% 20% 20%;
+  z-index: 5;
+}
 
-    .flame::before,
-    .flame::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-    }
+.candle::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 5px;
+  background: black;
+}
 
-    .flame::before {
-      top: -10px;
-      border-bottom: 10px solid yellow;
-    }
+.flame {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -12px;
+  height: 10px;
+  width: 10px;
+  background: #F78F4E;
+  border-radius: 50%;
+  border: 2px solid yellow;
+  animation: flicker 0.15s infinite alternate;
+}
 
-    .flame::after {
-      top: -6px;
-      border-bottom: 10px solid #F78F4E;
-    }
+.flame::before,
+.flame::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
 
-    .puff {
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2.4rem;
-      opacity: 0;
-      transition: all 1s ease;
-      pointer-events: none;
-      user-select: none;
-      z-index: 12;
-    }
+.flame::before {
+  top: -10px;
+  border-bottom: 10px solid yellow;
+}
 
-  
-  #playBtn {
-    background: #d6336c;
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    border-radius: 25px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 6px 10px rgba(214,51,108,0.7);
-    transition: background 0.3s ease;
-    margin-top: 20px;
-  }
-  #playBtn:hover:not(:disabled) { background: #b52857; }
-  #playBtn:disabled { cursor: not-allowed; opacity: 0.6; }
+.flame::after {
+  top: -6px;
+  border-bottom: 10px solid #F78F4E;
+}
 
-  #instructionText {
-    font-size: 1.3rem;
-    color: #d6336c;
-    font-weight: 600;
-    margin-top: 20px;
-    user-select: none;
-    text-align: center;
-  }
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1); opacity: 1; filter: drop-shadow(0 0 10px #ffa726); }
+  100% { transform: translateX(-50%) scale(1.1); opacity: 0.85; filter: drop-shadow(0 0 14px #ffb74d); }
+}
 
-  #screen3 video {
-    max-width: 100%;
-    max-height: 80vh;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    background: black;
-  }
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.5) translateY(-10px); }
+}
+
+.puff {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.4rem;
+  opacity: 0;
+  transition: all 1s ease;
+  pointer-events: none;
+  user-select: none;
+  z-index: 12;
+}
+
+.cherry-decoration {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: var(--cherry-color);
+  border-radius: 50%;
+  box-shadow: 0 -2px 0 var(--cherry-gloss) inset;
+}
+.cherry1 { top: 25px; left: 55px; }
+.cherry2 { top: 25px; left: 80px; }
+.cherry3 { top: 25px; left: 105px; }
+.cherry4 { top: 25px; left: 130px; }
+
+#playBtn {
+  background: #d6336c;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 6px 10px rgba(214,51,108,0.7);
+  transition: background 0.3s ease;
+  margin-top: 20px;
+}
+#playBtn:hover:not(:disabled) { background: #b52857; }
+#playBtn:disabled { cursor: not-allowed; opacity: 0.6; }
+
+#instructionText {
+  font-size: 1.3rem;
+  color: #d6336c;
+  font-weight: 600;
+  margin-top: 20px;
+  user-select: none;
+  text-align: center;
+}
+
+#screen3 video {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  background: black;
+}
 </style>
 </head>
 <body>
@@ -216,29 +241,25 @@
     <div class="plate"></div>
     <div class="cake-side"></div>
     <div class="cake-top"></div>
-   
+
     <div class="drips">
       <div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div>
       <div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div>
     </div>
 
-  <div class="cherry-decoration cherry1"></div>
-  <div class="cherry-decoration cherry2"></div>
-  <div class="cherry-decoration cherry3"></div>
-  <div class="cherry-decoration cherry4"></div>
-  <div class="cherry-decoration cherry5"></div>
-  <div class="cherry-decoration cherry6"></div>
-  <div class="cherry-decoration cherry7"></div>
-  <div class="cherry-decoration cherry8"></div>
-  <div class="cherry-decoration cherry9"></div>
+    <div class="cherry-decoration cherry1"></div>
+    <div class="cherry-decoration cherry2"></div>
+    <div class="cherry-decoration cherry3"></div>
+    <div class="cherry-decoration cherry4"></div>
 
-
-    <div class="candle flame" id="candle"></div>
+    <div class="candle" id="candle">
+      <div class="flame" id="flame"></div>
+    </div>
     <div class="puff" id="puff">💨</div>
   </div>
 
-  <div id="instructionText">Blow the candle Ate Mira 🎂💨</div>
-  <button id="playBtn" disabled>Play Video</button>
+  <div id="instructionText">Blow the candle 🎂💨</div>
+  <button id="playBtn" disabled>Play</button>
 </div>
 
 <div id="screen3">
@@ -253,6 +274,7 @@
 <script>
   const candle = document.getElementById("candle");
   const puff = document.getElementById("puff");
+  const flame = document.getElementById("flame");
   const playBtn = document.getElementById("playBtn");
   const instructionText = document.getElementById("instructionText");
   const screen1 = document.getElementById("screen1");
@@ -277,9 +299,7 @@
       const bufferLength = analyser.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
 
-      // ✅ Start music once mic access is granted
       playBackgroundMusic();
-
       listenVolume();
     }).catch(e => {
       alert("Microphone access denied or error: " + e.message);
@@ -288,38 +308,29 @@
 
   function listenVolume() {
     if (isBlown) return;
-
     analyser.getByteFrequencyData(dataArray);
     let values = 0;
     for (let i = 0; i < dataArray.length; i++) values += dataArray[i];
     let average = values / dataArray.length;
-
-    // Detect blowing sound
     if (average > 50) {
       blowOutCandle();
       return;
     }
-
     requestAnimationFrame(listenVolume);
   }
 
   function blowOutCandle() {
     if (isBlown) return;
     isBlown = true;
-
-    // Stop background music smoothly
     fadeOutMusic();
-
-    candle.classList.add("blow-out");
+    flame.style.animation = "fadeOut 1s forwards";
     puff.style.opacity = "1";
     puff.style.transform = "translateX(-50%) translateY(-25px)";
-
     setTimeout(() => {
-      candle.classList.remove("flame");
+      flame.style.opacity = "0";
       puff.style.opacity = "0";
-      puff.style.transform = "translateX(-50%) translateY(0)";
       playBtn.disabled = false;
-      instructionText.textContent = "Candle blown out! Click Play to watch the video 🎉";
+      instructionText.textContent = "Click Play to watch the video 🎉";
     }, 1200);
   }
 
@@ -329,7 +340,6 @@
     birthdayVideo.play();
   });
 
-  // ✅ Smooth fade-out of background music
   function fadeOutMusic() {
     const fade = setInterval(() => {
       if (bgMusic.volume > 0.05) {
@@ -342,7 +352,6 @@
     }, 100);
   }
 
-  // ✅ Background music control
   function playBackgroundMusic() {
     bgMusic.volume = 0.5;
     bgMusic.play().catch(() => {
@@ -355,6 +364,8 @@
 
 </body>
 </html>
+
+
 
 
 
