@@ -6,7 +6,7 @@
 <title>Happy Birthday Ate Mira</title>
 <style>
   body, html {
-    margin: 0; padding: 0; height: 100%; 
+    margin: 0; padding: 0; height: 100%;
     background: #ffeff7;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -14,7 +14,7 @@
 
   #screen1, #screen3 {
     width: 100%; max-width: 700px; min-height: 100vh;
-    display: none; 
+    display: none;
     flex-direction: column; align-items: center; justify-content: center;
     padding: 20px;
   }
@@ -49,14 +49,15 @@
     border-radius: 15px;
     box-shadow: inset 0 5px 10px rgba(255, 255, 255, 0.5);
   }
+
   .layer-1 {
     bottom: 120px;
     height: 50px;
     background: #f5c6a5;
-    box-shadow: inset 0 5px 10px rgba(255, 255, 255, 0.8);
     border: 3px solid #d7a17a;
     z-index: 3;
   }
+
   .layer-2 {
     bottom: 170px;
     height: 40px;
@@ -64,6 +65,7 @@
     border: 3px solid #f8d9a1;
     z-index: 4;
   }
+
   .layer-3 {
     bottom: 210px;
     height: 30px;
@@ -84,7 +86,6 @@
     box-shadow: inset 0 5px 8px rgba(255, 255, 255, 0.9);
     z-index: 6;
     border: 2px solid #f6e8c3;
-    filter: drop-shadow(0 1px 1px rgba(255,255,255,0.8));
   }
 
   .candle {
@@ -123,16 +124,8 @@
   }
 
   @keyframes flicker {
-    0% {
-      transform: translateX(-50%) scale(1);
-      opacity: 1;
-      filter: drop-shadow(0 0 10px #ffa726);
-    }
-    100% {
-      transform: translateX(-50%) scale(1.1);
-      opacity: 0.85;
-      filter: drop-shadow(0 0 14px #ffb74d);
-    }
+    0% { transform: translateX(-50%) scale(1); opacity: 1; filter: drop-shadow(0 0 10px #ffa726); }
+    100% { transform: translateX(-50%) scale(1.1); opacity: 0.85; filter: drop-shadow(0 0 14px #ffb74d); }
   }
 
   .candle.blow-out::before {
@@ -140,13 +133,8 @@
   }
 
   @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-      transform: scale(0.5) translateY(-10px);
-    }
+    from { opacity: 1; }
+    to { opacity: 0; transform: scale(0.5) translateY(-10px); }
   }
 
   .puff {
@@ -159,7 +147,6 @@
     transition: all 1s ease;
     pointer-events: none;
     user-select: none;
-    filter: drop-shadow(0 0 2px #bbb);
     z-index: 12;
   }
 
@@ -175,13 +162,8 @@
     transition: background 0.3s ease;
     margin-top: 20px;
   }
-  #playBtn:hover:not(:disabled) {
-    background: #b52857;
-  }
-  #playBtn:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+  #playBtn:hover:not(:disabled) { background: #b52857; }
+  #playBtn:disabled { cursor: not-allowed; opacity: 0.6; }
 
   #instructionText {
     font-size: 1.3rem;
@@ -203,7 +185,7 @@
 </head>
 <body>
 
-<div id="screen1" class="active" style="flex-direction: column; align-items: center; justify-content: center;">
+<div id="screen1" class="active">
   <div class="cake-container" id="cake-container">
     <div class="cake-base"></div>
     <div class="cake-layer layer-1"></div>
@@ -215,19 +197,18 @@
     <div class="puff" id="puff">💨</div>
   </div>
 
-  <div id="instructionText">Blow the candle Sam 🎂💨</div>
+  <div id="instructionText">Blow the candle Ate Mira 🎂💨</div>
   <button id="playBtn" disabled>Play Video</button>
 </div>
 
 <div id="screen3">
   <video id="birthdayVideo" controls preload="auto">
-    <source src="RicaMeme.mp4" type="video/mp4" />
+    <source src="hbd.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 </div>
 
-  <audio id="bgMusic" src="bgmusic.mp3" loop></audio>
-
+<audio id="bgMusic" src="musicBg.mp3" loop></audio>
 
 <script>
   const candle = document.getElementById("candle");
@@ -239,10 +220,7 @@
   const birthdayVideo = document.getElementById("birthdayVideo");
   const bgMusic = document.getElementById("bgMusic");
 
-  let audioContext;
-  let analyser;
-  let microphone;
-  let dataArray;
+  let audioContext, analyser, microphone, dataArray;
   let isBlown = false;
 
   function startMic() {
@@ -259,7 +237,7 @@
       const bufferLength = analyser.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
 
-      // Start background music when mic access is granted
+      // ✅ Start music once mic access is granted
       playBackgroundMusic();
 
       listenVolume();
@@ -269,18 +247,14 @@
   }
 
   function listenVolume() {
-    if (isBlown) return; // Stop listening once blown
+    if (isBlown) return;
 
     analyser.getByteFrequencyData(dataArray);
     let values = 0;
-
-    for (let i = 0; i < dataArray.length; i++) {
-      values += dataArray[i];
-    }
-
+    for (let i = 0; i < dataArray.length; i++) values += dataArray[i];
     let average = values / dataArray.length;
 
-    // Threshold for blow detection
+    // Detect blowing sound
     if (average > 50) {
       blowOutCandle();
       return;
@@ -315,34 +289,32 @@
     birthdayVideo.play();
   });
 
-  // Smooth fade-out for music
+  // ✅ Smooth fade-out of background music
   function fadeOutMusic() {
-    const fadeInterval = setInterval(() => {
+    const fade = setInterval(() => {
       if (bgMusic.volume > 0.05) {
         bgMusic.volume -= 0.05;
       } else {
         bgMusic.pause();
         bgMusic.currentTime = 0;
-        clearInterval(fadeInterval);
+        clearInterval(fade);
       }
     }, 100);
   }
 
-  // Background music function
+  // ✅ Background music control
   function playBackgroundMusic() {
-    bgMusic.volume = 0.5; // Adjust volume
+    bgMusic.volume = 0.5;
     bgMusic.play().catch(() => {
       console.log("Autoplay blocked; will start after user interaction.");
     });
   }
 
-  // Start mic on page load
-  window.onload = () => {
-    startMic();
-  };
+  window.onload = startMic;
 </script>
 
 </body>
 </html>
+
 
 
