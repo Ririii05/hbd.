@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Happy Birthday Pres💗</title>
+<title>Happy Birthday Ate Mira</title>
 <style>
   body, html {
     margin: 0; padding: 0; height: 100%; 
@@ -226,6 +226,9 @@
   </video>
 </div>
 
+  <audio id="bgMusic" src="bgmusic.mp3" loop></audio>
+
+
 <script>
   const candle = document.getElementById("candle");
   const puff = document.getElementById("puff");
@@ -234,6 +237,7 @@
   const screen1 = document.getElementById("screen1");
   const screen3 = document.getElementById("screen3");
   const birthdayVideo = document.getElementById("birthdayVideo");
+  const bgMusic = document.getElementById("bgMusic");
 
   let audioContext;
   let analyser;
@@ -255,6 +259,9 @@
       const bufferLength = analyser.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
 
+      // Start background music when mic access is granted
+      playBackgroundMusic();
+
       listenVolume();
     }).catch(e => {
       alert("Microphone access denied or error: " + e.message);
@@ -273,9 +280,7 @@
 
     let average = values / dataArray.length;
 
-    // console.log("Volume average: ", average);
-
-    // Threshold for blow detection, tweak this value if needed
+    // Threshold for blow detection
     if (average > 50) {
       blowOutCandle();
       return;
@@ -287,6 +292,9 @@
   function blowOutCandle() {
     if (isBlown) return;
     isBlown = true;
+
+    // Stop background music smoothly
+    fadeOutMusic();
 
     candle.classList.add("blow-out");
     puff.style.opacity = "1";
@@ -307,6 +315,27 @@
     birthdayVideo.play();
   });
 
+  // Smooth fade-out for music
+  function fadeOutMusic() {
+    const fadeInterval = setInterval(() => {
+      if (bgMusic.volume > 0.05) {
+        bgMusic.volume -= 0.05;
+      } else {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        clearInterval(fadeInterval);
+      }
+    }, 100);
+  }
+
+  // Background music function
+  function playBackgroundMusic() {
+    bgMusic.volume = 0.5; // Adjust volume
+    bgMusic.play().catch(() => {
+      console.log("Autoplay blocked; will start after user interaction.");
+    });
+  }
+
   // Start mic on page load
   window.onload = () => {
     startMic();
@@ -315,4 +344,5 @@
 
 </body>
 </html>
+
 
